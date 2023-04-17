@@ -1,0 +1,73 @@
+@import url(/css/navbar.css);
+@import url(/css/default.css);
+
+/* MAIN CONTAINER */
+.main-container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    padding: 0rem 2rem;
+    grid-template-areas:
+        "figure texts"
+        "education skills";
+}
+
+/* SIDE TEXT */
+.main-text { 
+    grid-area: texts;
+    text-align: left;
+    border-radius: 5px;
+    width: 31rem;
+    margin-left: 3rem;
+}
+
+h2 {
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-decoration: underline 2px;
+    text-underline-offset: 0.375rem;
+}
+
+.yellow {
+    color: #ffc404;
+}
+
+figure {
+    grid-area: figure;
+}
+
+/* IMAGE */
+.image {
+    max-block-size: 30rem;
+    border-radius: 52% 48% 30% 70% / 64% 40% 60% 36% ;
+    border: solid #ffd44c 3px;
+    background-color: #ffd54c11;
+}
+
+/* EDUCATION */
+.education {
+    grid-area: education;
+}
+
+/* SKILLS */
+.skills {
+    margin-left: 3rem;
+    grid-area: skills;
+    margin-top: 1.25rem;
+}
+
+.skills > ul{
+    padding-left: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.skills > ul li {
+    list-style-type: circle;
+    height: auto;
+    width: 3rem;
+}
+
+.skills > ul > li > img {
+    margin-top: 1rem;
+}

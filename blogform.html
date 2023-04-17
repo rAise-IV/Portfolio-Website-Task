@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Entry Form</title>
+        <link rel="stylesheet" type="text/css" href="css/reset.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat|Quicksand|Staatliches|Play">
+        <link rel="stylesheet" type="text/css" href="css/blogform.css">
+    </head>
+    <body>
+        <main class="container">
+            <form action="blog.html" method="get">
+                <h1 class="bold center-text">CREATE ENTRY</h1>
+                <fieldset class="entry-container">
+                    <input type="text" placeholder="Title" name="title" id="title" required>
+                    <textarea placeholder="Enter text here" name="entry-text" id="entry-text" required></textarea>
+                </fieldset>
+                <section class="submission">
+                    <button type="submit">Post</button>
+                    <button type="reset">Clear</button>
+                </section>
+            </form>
+        </main>
+    </body>
+</html>

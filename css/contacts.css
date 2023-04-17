@@ -1,0 +1,7 @@
+@import url(/css/navbar.css);
+@import url(/css/default.css);
+
+/* MAIN CONTAINER */
+.main-container {
+    margin: 0 auto;
+}

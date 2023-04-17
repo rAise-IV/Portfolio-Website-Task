@@ -1,0 +1,27 @@
+/* GENERAL - DEFAULT */
+body {
+    font-family: Montserrat, Arial, Helvetica, sans-serif;
+    background-color: #fefef6;
+    color: black;
+    font-size: 1rem;
+    /*ignore scrollbar width*/
+    overflow-y:overlay;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.yellow {
+    color: #ffc404;
+}
+
+.center-text {
+	text-align: center;
+}

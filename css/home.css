@@ -1,0 +1,42 @@
+@import url(/css/navbar.css);
+@import url(/css/default.css);
+
+/* MAIN CONTAINER */
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0rem 10rem;
+}
+
+/* SIDE TEXT */
+.main-text {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-right: 10rem;
+}
+
+.contact-shortcut {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    background-color: #ffd44c;
+    padding: 0.25rem  1.5rem;
+    border-radius: 1rem;
+    border: rgba(255, 255, 255, 0.087);
+    cursor: pointer;
+}
+
+.yellow {
+    color: #ffc404;
+}
+
+/* IMAGE */
+.image {
+    min-width: 20rem;
+    max-width: 100%;
+    max-block-size: 33.3333rem;
+    border-radius: 68% 32% 67% 33% / 44% 41% 59% 56% ;
+    border: solid #ffd44c 3px;
+    background-color: #ffd54c11;
+}
