@@ -2,11 +2,11 @@
     session_start();
 
     $host = "127.0.0.1";
-    $preset_email = "root";
-    $preset_password = "";
+    $dbusername = "root";
+    $dbpassword = "";
     $dbname = "ec22959";
 
-    $conn = new mysqli($host, $preset_email, $preset_password, $dbname);
+    $conn = new mysqli($host, $dbusername, $dbpassword, $dbname);
 
     // Check if there was an error connecting to the database
     if ($conn->connect_error) {
