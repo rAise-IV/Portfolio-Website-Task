@@ -49,6 +49,11 @@ form > button.login {
     border: #c5e6d6 solid 3px;
 }
 
+form > button.logout {
+    background-color: #faf2f2;
+    border: #e6c5c5 solid 3px;
+}
+
 form > button.create {
     background-color: #fffce8;
     border: #fff0b3 solid 3px;

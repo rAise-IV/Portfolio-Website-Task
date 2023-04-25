@@ -12,11 +12,21 @@
         <link rel="stylesheet" type="text/css" href="css/navbar.css">
     </head>
     <body>
-        <form class="container" action="phase1-blog.html" method="get">
+
+        <?php
+            // Display an error message if login failed
+            if(isset($_GET["error"])){
+                $error = $_GET["error"];
+                echo "<p>$error</p>";
+            }
+        ?>
+        
+        <form class="container" action="validate_login.php" method="post">
+
             <h1 class="bold center-text">LOGIN</h1>
             <fieldset class="credential-container">
-                <input type="email" placeholder="Email" name="email" id="email" required>
-                <input type="password" placeholder="Password" name="password" id="password" required>
+                <input type="email" placeholder="Email" name="email" id="email">
+                <input type="password" placeholder="Password" name="password" id="password">
             </fieldset>
             <section class="submission">
                 <button type="submit">Login</button>

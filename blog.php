@@ -20,19 +20,30 @@
                         <li><a href="home.html">Home</a></li>
                         <li><a href="about.html">About Me</a></li>
                         <li><a href="projects.html">Projects</a></li>
-                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="blog.php">Blog</a></li>
                         <li><a href="contacts.html">Contact</a></li>
                     </ul>
                 </nav>
             </header>
             <article class="main-container">
                 <aside class="aside">
-                    <div class="status">
-                        Offline
-                    </div>
-                    <form action="loginform.html">
-                        <button class="login" type="submit">Login</button>
-                    </form>
+                    <?php
+                        session_start();
+
+                        // check if user is already logged in
+                        if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+                            echo "<div class='status'>Online</div>";
+                            echo "<form action='logout.php'>";
+                            echo "<button class='logout' type='submit'>Logout</button>";
+                            echo "</form>";
+                        } else {
+                            echo "<div class='status'>Offline</div>";
+                            echo "<form action='loginform.php'>";
+                            echo "<button class='login' type='submit'>Login</button>";
+                            echo "</form>";
+                        }
+                    ?>
+
                     <form action="blogform.html">
                         <button class="create" type="submit">Create Entry</button>
                     </form>
@@ -44,7 +55,7 @@
                     </section>
                 </section>
             </article>
-            <footer class="footer">Kristian Sarong 2023 &#169;</footer>
+            <footer class="footer">ignore this Kristian Sarong 2023 &#169;</footer>
         </main>
     </body>
 </html>
