@@ -32,21 +32,25 @@
 
                         // check if user is already logged in
                         if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-                            echo "<div class='status'>Online</div>";
-                            echo "<form action='logout.php'>";
-                            echo "<button class='logout' type='submit'>Logout</button>";
-                            echo "</form>";
+                            echo <<< EOL
+                             <div class='status'>Online</div>
+                             <form action='logout.php'>
+                                <button class='logout' type='submit'>Logout</button>
+                             </form>
+                             
+                             <form action='blogform.html'>
+                                <button class='create' type='submit'>Create Entry</button>
+                             </form>
+                            EOL;
                         } else {
-                            echo "<div class='status'>Offline</div>";
-                            echo "<form action='loginform.php'>";
-                            echo "<button class='login' type='submit'>Login</button>";
-                            echo "</form>";
+                            echo <<< EOL
+                            <div class='status'>Offline</div>
+                            <form action='loginform.php'>
+                                <button class='login' type='submit'>Login</button>
+                            </form>
+                            EOL;
                         }
                     ?>
-
-                    <form action="blogform.html">
-                        <button class="create" type="submit">Create Entry</button>
-                    </form>
                 </aside>
                 <section class="blog-container">
                     <header class="blog-header bold">Blog</header>
