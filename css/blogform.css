@@ -35,6 +35,10 @@ textarea {
     min-height: 10rem;
 }
 
+.invalid {
+    outline: 2px solid red;
+}
+
 /* BUTTONS */
 .submission {
     width: 100%;
