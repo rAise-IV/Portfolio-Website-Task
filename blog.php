@@ -53,9 +53,14 @@
                     ?>
                 </aside>
                 <section class="blog-container">
-                    <header class="blog-header bold">Blog</header>
+                    <!--  <header class="blog-header bold">Blog</header>   -->
                     <section class="blog-list">
-                        
+                        <div class="blog-item">
+                            <h5 class="item-date"></h5>
+                            <h4 class="item-title"></h4>
+                            <p class="item-text"></p>
+                            <hr>
+                        </div>
                     </section>
                 </section>
             </article>
