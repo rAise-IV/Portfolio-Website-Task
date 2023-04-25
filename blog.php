@@ -53,8 +53,8 @@
                     ?>
                 </aside>
                 <section class="blog-container">
-                    <!--  <header class="blog-header bold">Blog</header>   -->
                     <section class="blog-list">
+
                         <?php
                             $host = "127.0.0.1";
                             $dbusername = "root";
@@ -72,17 +72,43 @@
                             $sql = "SELECT * FROM blogentry";
                             $result = $conn->query($sql);
 
-                            // output data as blog-items
+                            // store entries in an array
+                            $blog_entries = array();
                             if ($result-> num_rows > 0) {
                                 while($row = $result->fetch_assoc()) {
-                                    echo "<div class='blog-item'>";
-                                    echo "<h5 class='item-date'>" . $row['date'] . "</h5>";
-                                    echo "<h4 class='item-title'>" . nl2br($row['title']) . "</h4>";
-                                    echo "<p class='item-text'>" . nl2br($row['text']) . "</p>";
-                                    echo "<hr>";
-                                    echo "</div>";
+                                    $blog_entries[] = $row;
                                 }
                             }
+
+                            // usort — Sort an array by values using a user-defined comparison function
+                            // https://www.php.net/manual/en/function.usort.php
+                            usort($blog_entries, 'compareBlogEntriesByDate');
+
+                            function compareBlogEntriesByDate($a, $b) {
+                                // converts string to a date
+                                $dateA = strtotime($a['date']);
+                                $dateB = strtotime($b['date']);
+                            
+                                // returns either -1, 0 or 1 to signify if the first parameter is less than, equal to, or greater than the second.
+                                if ($dateA > $dateB) {
+                                    return -1;
+                                } else if ($dateA < $dateB) {
+                                    return 1;
+                                } else {
+                                    return 0;
+                                }
+                            }
+
+                            // display blog_entries
+                            foreach ($blog_entries as $row) {
+                                echo "<div class='blog-item'>";
+                                echo "<h5 class='item-date'>" . $row['date'] . "</h5>";
+                                echo "<h4 class='item-title'>" . nl2br($row['title']) . "</h4>";
+                                echo "<p class='item-text'>" . nl2br($row['text']) . "</p>";
+                                echo "<hr>";
+                                echo "</div>";
+                            }
+
                         ?>
                     </section>
                 </section>
