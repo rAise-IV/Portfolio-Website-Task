@@ -12,7 +12,6 @@
         <link rel="stylesheet" type="text/css" href="css/navbar.css">
     </head>
     <body>
-
         <?php
             // Display an error message if login failed
             if(isset($_GET["error"])){
