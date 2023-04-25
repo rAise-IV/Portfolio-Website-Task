@@ -55,12 +55,35 @@
                 <section class="blog-container">
                     <!--  <header class="blog-header bold">Blog</header>   -->
                     <section class="blog-list">
-                        <div class="blog-item">
-                            <h5 class="item-date"></h5>
-                            <h4 class="item-title"></h4>
-                            <p class="item-text"></p>
-                            <hr>
-                        </div>
+                        <?php
+                            $host = "127.0.0.1";
+                            $dbusername = "root";
+                            $dbpassword = "";
+                            $dbname = "ec22959";
+
+                            $conn = new mysqli($host, $dbusername, $dbpassword, $dbname);
+
+                            // Check if there was an error connecting to the database
+                            if ($conn->connect_error) {
+                                die("Connection failed: " . $conn->connect_error);
+                            }
+
+                            // retrieve data from the blog-entry table
+                            $sql = "SELECT * FROM blogentry";
+                            $result = $conn->query($sql);
+
+                            // output data as blog-items
+                            if ($result-> num_rows > 0) {
+                                while($row = $result->fetch_assoc()) {
+                                    echo "<div class='blog-item'>";
+                                    echo "<h5 class='item-date'>" . $row['date'] . "</h5>";
+                                    echo "<h4 class='item-title'>" . nl2br($row['title']) . "</h4>";
+                                    echo "<p class='item-text'>" . nl2br($row['text']) . "</p>";
+                                    echo "<hr>";
+                                    echo "</div>";
+                                }
+                            }
+                        ?>
                     </section>
                 </section>
             </article>
