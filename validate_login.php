@@ -16,7 +16,6 @@
     $email = filter_var(trim($_POST["email"], FILTER_SANITIZE_EMAIL));
     $password = trim($_POST["password"]);
     
-
     $sql = "SELECT * FROM users WHERE email='$email' AND password='$password'";
     $result = $conn->query($sql);
 
