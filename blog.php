@@ -54,7 +54,6 @@
                 </aside>
                 <section class="blog-container">
                     <section class="blog-list">
-
                     <?php
                         $host = "127.0.0.1";
                         $dbusername = "root";
