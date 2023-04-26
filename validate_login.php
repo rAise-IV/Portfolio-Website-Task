@@ -22,7 +22,7 @@
 
     if($result && $result->num_rows > 0) {
         $_SESSION["loggedin"] = true;
-        header("location: blog.php");
+        header("location: blogform.html");
         exit;
     } else {
         header("location: loginform.php?error=Invalid email or password.");
