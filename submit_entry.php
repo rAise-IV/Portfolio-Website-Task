@@ -3,7 +3,7 @@
     $host = "127.0.0.1";
     $dbusername = "root";
     $dbpassword = "";
-    $dbname = "ec22959";
+    $dbname = "ecs417";
 
     $conn = new mysqli($host, $dbusername, $dbpassword, $dbname);
 
@@ -20,12 +20,12 @@
 
     // Attempt insert query execution
     $sql = "INSERT INTO blogEntry (title, text) VALUES ('$title', '$text')";
-    if(mysqli_query($conn, $sql)){
+    if($conn->query($sql) === TRUE){
         header('Location: blog.php');
         exit;
-    } else{
-        echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
     }
 
-    mysqli_close($conn);
+    $conn->close();
 ?>

@@ -59,11 +59,12 @@
                         $host = "127.0.0.1";
                         $dbusername = "root";
                         $dbpassword = "";
-                        $dbname = "ec22959";
+                        $dbname = "ecs417";
 
+                        // Creates connection
                         $conn = new mysqli($host, $dbusername, $dbpassword, $dbname);
 
-                        // Check if there was an error connecting to the database
+                        // Checks connection
                         if ($conn->connect_error) {
                             die("Connection failed: " . $conn->connect_error);
                         }
