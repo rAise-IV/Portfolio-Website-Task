@@ -24,7 +24,9 @@ form.addEventListener('submit', (event) => {
 
 clearButton.addEventListener('click', (event) => {
     event.preventDefault();
-    form.reset();
-    title.classList.remove('invalid');
-    entryText.classList.remove('invalid');
+    if (confirm('Clear form?') == true){
+        form.reset();
+        title.classList.remove('invalid');
+        entryText.classList.remove('invalid');
+    }
 });
