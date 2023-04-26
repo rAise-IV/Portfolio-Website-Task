@@ -75,27 +75,37 @@
                             // store entries in an array
                             $blog_entries = array();
                             if ($result-> num_rows > 0) {
+                                // fetch_assoc takes an array associated by the key. e.g. entry [1] would have associations with it's fields date,title,text
                                 while($row = $result->fetch_assoc()) {
                                     $blog_entries[] = $row;
                                 }
                             }
 
-                            // usort — Sort an array by values using a user-defined comparison function
-                            // https://www.php.net/manual/en/function.usort.php
-                            usort($blog_entries, 'compareBlogEntriesByDate');
+                            selectionSort($blog_entries);
 
-                            function compareBlogEntriesByDate($a, $b) {
-                                // converts string to a date
-                                $dateA = strtotime($a['date']);
-                                $dateB = strtotime($b['date']);
-                            
-                                // returns either -1, 0 or 1 to signify if the first parameter is less than, equal to, or greater than the second.
-                                if ($dateA > $dateB) {
-                                    return -1;
-                                } else if ($dateA < $dateB) {
-                                    return 1;
-                                } else {
-                                    return 0;
+                            /*
+                            compares initial max with the rest of the array
+                            checks array if a value is larger than it
+                            if so, it swaps the initial max value with the new max
+                            */
+                            function selectionSort(&$array) {
+                                $n = sizeof($array);
+
+                                for($i=0; $i<$n; $i++) {
+                                    $max_index = $i;
+
+                                    for($j=$i+1; $j<$n; $j++) {
+                                        $a = $array[$j];
+                                        $b = $array[$max_index];
+
+                                        if(strtotime($a['date']) > strtotime($b['date'])) {
+                                            $max_index = $j;
+                                        }
+                                    }
+                                    //swap initial max with new max
+                                    $temp = $array[$i];
+                                    $array[$i] = $array[$max_index];
+                                    $array[$max_index] = $temp;
                                 }
                             }
 
