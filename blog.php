@@ -55,75 +55,75 @@
                 <section class="blog-container">
                     <section class="blog-list">
 
-                        <?php
-                            $host = "127.0.0.1";
-                            $dbusername = "root";
-                            $dbpassword = "";
-                            $dbname = "ec22959";
+                    <?php
+                        $host = "127.0.0.1";
+                        $dbusername = "root";
+                        $dbpassword = "";
+                        $dbname = "ec22959";
 
-                            $conn = new mysqli($host, $dbusername, $dbpassword, $dbname);
+                        $conn = new mysqli($host, $dbusername, $dbpassword, $dbname);
 
-                            // Check if there was an error connecting to the database
-                            if ($conn->connect_error) {
-                                die("Connection failed: " . $conn->connect_error);
+                        // Check if there was an error connecting to the database
+                        if ($conn->connect_error) {
+                            die("Connection failed: " . $conn->connect_error);
+                        }
+
+                        // retrieve data from the blog-entry table
+                        $sql = "SELECT * FROM blogentry";
+                        $result = $conn->query($sql);
+
+                        // store entries in an array
+                        $blog_entries = array();
+                        if ($result-> num_rows > 0) {
+                            // fetch_assoc takes an array associated by the key. e.g. entry [1] would have associations with it's fields date,title,text
+                            while($row = $result->fetch_assoc()) {
+                                $blog_entries[] = $row;
                             }
+                        }
 
-                            // retrieve data from the blog-entry table
-                            $sql = "SELECT * FROM blogentry";
-                            $result = $conn->query($sql);
+                        selectionSort($blog_entries);
 
-                            // store entries in an array
-                            $blog_entries = array();
-                            if ($result-> num_rows > 0) {
-                                // fetch_assoc takes an array associated by the key. e.g. entry [1] would have associations with it's fields date,title,text
-                                while($row = $result->fetch_assoc()) {
-                                    $blog_entries[] = $row;
-                                }
-                            }
+                        /*
+                        compares initial max with the rest of the array
+                        checks array if a value is larger than it
+                        if so, it swaps the initial max value with the new max
+                        */
+                        function selectionSort(&$array) {
+                            $n = sizeof($array);
 
-                            selectionSort($blog_entries);
+                            for($i=0; $i<$n; $i++) {
+                                $max_index = $i;
 
-                            /*
-                            compares initial max with the rest of the array
-                            checks array if a value is larger than it
-                            if so, it swaps the initial max value with the new max
-                            */
-                            function selectionSort(&$array) {
-                                $n = sizeof($array);
+                                for($j=$i+1; $j<$n; $j++) {
+                                    $a = $array[$j];
+                                    $b = $array[$max_index];
 
-                                for($i=0; $i<$n; $i++) {
-                                    $max_index = $i;
-
-                                    for($j=$i+1; $j<$n; $j++) {
-                                        $a = $array[$j];
-                                        $b = $array[$max_index];
-
-                                        if(strtotime($a['date']) > strtotime($b['date'])) {
-                                            $max_index = $j;
-                                        }
+                                    if(strtotime($a['date']) > strtotime($b['date'])) {
+                                        $max_index = $j;
                                     }
-                                    //swap initial max with new max
-                                    $temp = $array[$i];
-                                    $array[$i] = $array[$max_index];
-                                    $array[$max_index] = $temp;
                                 }
+                                //swap initial max with new max
+                                $temp = $array[$i];
+                                $array[$i] = $array[$max_index];
+                                $array[$max_index] = $temp;
                             }
+                        }
 
-                            // display blog_entries
-                            foreach ($blog_entries as $row) {
-                                echo "<div class='blog-item'>";
-                                echo "<h5 class='item-date'>" . $row['date'] . "</h5>";
-                                echo "<h4 class='item-title'>" . nl2br($row['title']) . "</h4>";
-                                echo "<p class='item-text'>" . nl2br($row['text']) . "</p>";
-                                echo "<hr>";
-                                echo "</div>";
-                            }
+                        // display blog_entries
+                        foreach ($blog_entries as $row) {
+                            echo "<div class='blog-item'>";
+                            echo "<h5 class='item-date'>" . $row['date'] . "</h5>";
+                            echo "<h4 class='item-title'>" . nl2br($row['title']) . "</h4>";
+                            echo "<p class='item-text'>" . nl2br($row['text']) . "</p>";
+                            echo "<hr>";
+                            echo "</div>";
+                        }
 
-                        ?>
+                    ?>
                     </section>
                 </section>
             </article>
-            <footer class="footer">ignore this Kristian Sarong 2023 &#169;</footer>
+            <footer class="footer">Kristian Sarong 2023 &#169;</footer>
         </main>
     </body>
 </html>
