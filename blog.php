@@ -119,7 +119,6 @@
                             echo "<hr>";
                             echo "</div>";
                         }
-
                     ?>
                     </section>
                 </section>
